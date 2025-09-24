@@ -172,14 +172,14 @@ export default function Jaksim100HoursApp() {
   }, [projects, now]);
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 p-6">
+    <div className="min-h-screen bg-[#FAFAFA] text-gray-900 p-4 sm:p-6 pb-[env(safe-area-inset-bottom)]">
       <div className="max-w-3xl mx-auto">
-        <header className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold">작심백시간 · 프로젝트별 누적 타이머</h1>
+        <header className="mb-3 md:mb-5">
+          <h1 className="text-[22px] md:text-3xl font-extrabold tracking-tight leading-[1.25]">작심백시간 · 프로젝트별 누적 타이머</h1>
         </header>
 
         {/* Create Project Card */}
-        <div className="bg-white rounded-2xl shadow p-4 md:p-6 mb-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6 mb-5">
           <h2 className="text-lg font-semibold mb-3 flex items-center gap-2"><Plus className="h-5 w-5"/>새 프로젝트</h2>
           <div className="grid md:grid-cols-3 gap-3 mb-3">
             <input
@@ -187,13 +187,13 @@ export default function Jaksim100HoursApp() {
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               placeholder="프로젝트명 (예: 알고리즘 공부)"
-              className="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <input
               value={form.goal}
               onChange={(e) => setForm((f) => ({ ...f, goal: e.target.value }))}
               placeholder="이루고자 하는 목표 (선택)"
-              className="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <div className="flex items-center gap-2">
               <input
@@ -201,7 +201,7 @@ export default function Jaksim100HoursApp() {
                 min={0}
                 value={form.targetHours}
                 onChange={(e) => setForm((f) => ({ ...f, targetHours: Number(e.target.value) }))}
-                className="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <span className="text-sm text-gray-600 whitespace-nowrap">시간(기본 100)</span>
             </div>
@@ -209,13 +209,13 @@ export default function Jaksim100HoursApp() {
               value={form.currentStatus}
               onChange={(e) => setForm((f) => ({ ...f, currentStatus: e.target.value }))}
               placeholder="현재 상태 / 메모 (예: 현재 중급 수준, 30분 집중 유지 어려움)"
-              className="md:col-span-3 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[72px]"
+              className="md:col-span-3 w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[88px]"
             />
           </div>
-          <div className="flex justify-end">
+          <div className="flex md:justify-end">
             <button
               onClick={addProject}
-              className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-medium shadow hover:bg-indigo-700 transition"
+              className="w-full md:w-auto h-11 px-4 rounded-xl bg-indigo-600 text-white text-[15px] font-semibold shadow-sm hover:bg-indigo-700 active:scale-[0.99] transition"
             >
               추가
             </button>
@@ -295,14 +295,14 @@ function ProjectCard({
   const remainingMs = Math.max(0, project.targetMs - project.effectiveElapsedMs);
 
   return (
-    <div className="bg-white rounded-2xl shadow p-4 md:p-5">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-5">
       {/* Top Row */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           {!editing ? (
             <>
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="text-lg font-semibold truncate">{project.name}</h3>
+                <h3 className="text-[16px] font-semibold truncate">{project.name}</h3>
                 <button
                   className="p-1 rounded-lg hover:bg-gray-100"
                   onClick={() => setEditing(true)}
