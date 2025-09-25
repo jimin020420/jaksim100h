@@ -209,7 +209,7 @@ export default function Jaksim100HoursApp() {
               ref={nameInputRef}
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              placeholder="프로젝트명 (예: 알고리즘 공부)"
+              placeholder="프로젝트명"
               className="
               w-full rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-500
               px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
