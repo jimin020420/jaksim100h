@@ -214,7 +214,7 @@ export default function Jaksim100HoursApp() {
               value={form.currentStatus}
               onChange={(e) => setForm((f) => ({ ...f, currentStatus: e.target.value }))}
               placeholder="현재 상태 / 메모 (예: 현재 중급 수준, 30분 집중 유지 어려움)"
-              className="md:col-span-3 w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[88px]"
+              className="md:col-span-3 w-full rounded-xl border border-white/10 bg-[#1a1b1c] text-gray-100 px-3 py-3 text-[15px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[88px]"
             />
           </div>
           <div className="flex md:justify-end">
