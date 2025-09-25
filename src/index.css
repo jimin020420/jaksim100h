@@ -2,14 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* iOS notch / 홈바 안전영역 */
-body {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+:root {
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
 }
 
-/* 선택: 글자 기본 두께/가독성 */
+/* 공통: 높이/여백 초기화 + iOS 텍스트 확대 방지 */
 html, body {
+  height: 100%;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* iOS notch / 홈바 안전영역 적용 */
+body {
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+

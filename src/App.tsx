@@ -172,28 +172,33 @@ export default function Jaksim100HoursApp() {
   }, [projects, now]);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] text-gray-900 p-4 sm:p-6 pb-[env(safe-area-inset-bottom)]">
+    <div className="min-h-screen bg-[#111213] text-gray-100 p-4 sm:p-6 pb-[env(safe-area-inset-bottom)]">
       <div className="max-w-3xl mx-auto">
-        <header className="mb-3 md:mb-5">
-          <h1 className="text-[22px] md:text-3xl font-extrabold tracking-tight leading-[1.25]">작심백시간 · 프로젝트별 누적 타이머</h1>
+        <header className="mb-2">
+          <div className="text-center text-sm text-gray-400 mt-[var(--safe-top)]">
+            {new Date().toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric', weekday: 'short' })}
+          </div>
+          <h1 className="text-[22px] md:text-3xl font-extrabold tracking-tight leading-[1.25] text-center mt-1">
+            작심백시간
+          </h1>
         </header>
 
         {/* Create Project Card */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6 mb-5">
-          <h2 className="text-lg font-semibold mb-3 flex items-center gap-2"><Plus className="h-5 w-5"/>새 프로젝트</h2>
+        <div className="bg-[#151617] rounded-2xl shadow-sm border border-white/10 p-4 md:p-5 mb-5">
+          <h2 className="text-lg font-semibold mb-3 flex items-center gap-2"><Plus className="h-5 w-5" />새 프로젝트</h2>
           <div className="grid md:grid-cols-3 gap-3 mb-3">
             <input
               ref={nameInputRef}
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              placeholder="프로젝트명 (예: 알고리즘 공부)"
-              className="w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="프로젝트명"
+              className="w-full rounded-xl border border-white/10 bg-[#1a1b1c] text-gray-100 px-3 py-3 text-[15px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <input
               value={form.goal}
               onChange={(e) => setForm((f) => ({ ...f, goal: e.target.value }))}
               placeholder="이루고자 하는 목표 (선택)"
-              className="w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-xl border border-white/10 bg-[#1a1b1c] text-gray-100 px-3 py-3 text-[15px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <div className="flex items-center gap-2">
               <input
@@ -201,7 +206,7 @@ export default function Jaksim100HoursApp() {
                 min={0}
                 value={form.targetHours}
                 onChange={(e) => setForm((f) => ({ ...f, targetHours: Number(e.target.value) }))}
-                className="w-full rounded-xl border border-gray-300 px-3 py-3 text-[15px] placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full rounded-xl border border-white/10 bg-[#1a1b1c] text-gray-100 px-3 py-3 text-[15px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <span className="text-sm text-gray-600 whitespace-nowrap">시간(기본 100)</span>
             </div>
@@ -295,7 +300,7 @@ function ProjectCard({
   const remainingMs = Math.max(0, project.targetMs - project.effectiveElapsedMs);
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-5">
+    <div className="bg-[#151617] rounded-2xl shadow-sm border border-white/10 p-4 md:p-5">
       {/* Top Row */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
@@ -339,20 +344,20 @@ function ProjectCard({
                   onChange={(e) => setTempHours(Number(e.target.value))}
                   className="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
-                <span className="text-sm text-gray-600 whitespace-nowrap">시간 목표</span>
+                <span className="text-xs md:text-sm text-gray-400 whitespace-nowrap">시간 목표</span>
               </div>
               <textarea
                 value={tempStatus}
                 onChange={(e) => setTempStatus(e.target.value)}
                 placeholder="현재 상태 / 메모"
-                className="md:col-span-3 rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[72px]"
+                className="md:col-span-3 w-full rounded-xl border border-white/10 bg-[#1a1b1c] text-gray-100 px-3 py-3 text-[15px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[88px]"
               />
               <div className="md:col-span-3 flex gap-2 justify-end">
                 <button onClick={commitEdit} className="px-3 py-2 rounded-xl bg-emerald-600 text-white flex items-center gap-1">
-                  <Check className="h-4 w-4"/>저장
+                  <Check className="h-4 w-4" />저장
                 </button>
                 <button onClick={cancelEdit} className="px-3 py-2 rounded-xl bg-gray-200 text-gray-800 flex items-center gap-1">
-                  <X className="h-4 w-4"/>취소
+                  <X className="h-4 w-4" />취소
                 </button>
               </div>
             </div>
@@ -362,17 +367,16 @@ function ProjectCard({
         <div className="flex items-center gap-2">
           <button
             onClick={onToggleRun}
-            className={`px-3 py-2 rounded-xl text-white shadow flex items-center gap-2 ${
-              project.isRunning ? "bg-rose-600 hover:bg-rose-700" : "bg-indigo-600 hover:bg-indigo-700"
-            }`}
+            className={`px-3 py-2 rounded-xl text-white shadow flex items-center gap-2 ${project.isRunning ? "bg-rose-600 hover:bg-rose-700" : "bg-indigo-600 hover:bg-indigo-700"
+              }`}
           >
-            {project.isRunning ? <><Pause className="h-4 w-4"/>일시정지</> : <><Play className="h-4 w-4"/>시작</>}
+            {project.isRunning ? <><Pause className="h-4 w-4" />일시정지</> : <><Play className="h-4 w-4" />시작</>}
           </button>
           <button
             onClick={onDelete}
             className="px-3 py-2 rounded-xl bg-gray-100 text-gray-800 hover:bg-gray-200 flex items-center gap-2"
           >
-            <Trash2 className="h-4 w-4"/>삭제
+            <Trash2 className="h-4 w-4" />삭제
           </button>
         </div>
       </div>
