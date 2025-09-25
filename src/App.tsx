@@ -174,14 +174,13 @@ export default function Jaksim100HoursApp() {
   return (
     <div
       className="
-      min-h-screen
-      bg-white text-gray-900                       /* 라이트모드 강제 */
+      min-h-screen bg-gray-50 text-gray-900
       px-4 sm:px-6
-      pt-[calc(env(safe-area-inset-top)+12px)]    /* 노치 안전영역 + 여백 */
-      pb-[calc(env(safe-area-inset-bottom)+16px)] /* 홈바 안전영역 */
+      pt-[calc(env(safe-area-inset-top)+12px)]
+      pb-[calc(env(safe-area-inset-bottom)+16px)]
     "
     >
-      <div className="max-w-[600px] w-full mx-auto">      {/* 모바일 앱같은 폭 */}
+      <div className="max-w-[560px] w-full mx-auto">      {/* 모바일 앱같은 폭 */}
         <header className="mb-4">
           <div className="text-center text-sm text-gray-600">
             {new Date().toLocaleDateString('ko-KR', {
@@ -209,7 +208,7 @@ export default function Jaksim100HoursApp() {
               ref={nameInputRef}
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              placeholder="프로젝트명"
+              placeholder="프로젝트명(예: 운동,공부)"
               className="
               w-full rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-500
               px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
