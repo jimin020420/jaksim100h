@@ -8,14 +8,23 @@
   color-scheme: light;       /* 항상 라이트 */
 }
 
-/* 기본 리셋 + 텍스트 확대 방지 */
 html, body {
   height: 100%;
+  width: 100%;                  /* 폭 강제 */
   margin: 0;
+  padding: 0;                   /* 여백 초기화 */
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  box-sizing: border-box;       /* 박스계산 border-box */
+  overflow-x: hidden;           /* 가로 스크롤 방지 */
+  background-color: #ffffff;    /* 라이트모드 강제 배경 */
 }
+
+*, *::before, *::after {
+  box-sizing: inherit;          /* 모든 엘리먼트에 border-box 상속 */
+}
+
 
 /* 라이트 배경 고정 + 안전영역 패딩 */
 body {

@@ -181,7 +181,7 @@ export default function Jaksim100HoursApp() {
       pb-[calc(env(safe-area-inset-bottom)+16px)] /* 홈바 안전영역 */
     "
     >
-      <div className="max-w-[600px] w-full mx-auto px-4">      {/* 모바일 앱같은 폭 */}
+      <div className="max-w-[600px] w-full mx-auto">      {/* 모바일 앱같은 폭 */}
         <header className="mb-4">
           <div className="text-center text-sm text-gray-600">
             {new Date().toLocaleDateString('ko-KR', {
