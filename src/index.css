@@ -5,9 +5,10 @@
 :root {
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
+  color-scheme: light;       /* 항상 라이트 */
 }
 
-/* 공통: 높이/여백 초기화 + iOS 텍스트 확대 방지 */
+/* 기본 리셋 + 텍스트 확대 방지 */
 html, body {
   height: 100%;
   margin: 0;
@@ -16,10 +17,27 @@ html, body {
   text-rendering: optimizeLegibility;
 }
 
-/* iOS notch / 홈바 안전영역 적용 */
+/* 라이트 배경 고정 + 안전영역 패딩 */
 body {
+  background: #ffffff;       /* 흰색 고정 */
+  color: #111827;            /* text-gray-900 */
   padding-top: var(--safe-top);
   padding-bottom: var(--safe-bottom);
 }
 
+/* 입력 폰트 16px 이상 -> iOS 포커스 확대 방지 */
+input, textarea, select, button {
+  font-size: 16px;
+  color: #111827;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
 
+/* iOS 자동완성 어두워지는 문제 방지 */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #111827;
+  transition: background-color 9999s ease-in-out 0s;
+  caret-color: #111827;
+}
